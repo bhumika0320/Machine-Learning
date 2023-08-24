@@ -1,0 +1,129 @@
+import pandas as pd
+df=pd.read_csv("ml.csv")
+df.head()
+
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.metrics
+import accuracy_score,classification_report,confusion_matri
+import seaborn as sns
+import warnings
+warnings.filterwarnings("ignore")
+
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.metrics
+import accuracy_score,classification_report,confusion_matri
+import seaborn as sns
+import warnings
+warnings.filterwarnings("ignore")
+import plotly.express as px
+import seaborn as sns
+import plotly.graph_objects as go
+
+x=df.iloc[:,[1,3,4]].values
+y=df.iloc[:,[5]]
+from sklearn.model_selection
+import train_test_split x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=1/3,random_state=0)
+
+sns.heatmap(df.corr(),annot=True,linecolor="red")
+px.density_heatmap(df,x="Order No.",y="Order Type")
+
+fromsklearn.preprocessing
+import LabelEncoder 
+labenc=LabelEncoder()
+df['Items']=labenc.fit_transform(df['Items'])
+df['Order Type']=labenc.fit_transform(df['Order Type'])
+df['Grand Total (?)']=labenc.fit_transform(df['Grand Total (?)'])
+df['Payment Type']=labenc.fit_transform(df['Payment Type'])
+df['Ratings']=labenc.fit_transform(df['Ratings'])
+
+from sklearn.model_selection
+import train_test_split x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=1/3,random_state=0)
+
+df.info()
+#using Logistic Regression
+from sklearn.linear_model
+import LogisticRegression 
+model_1=LogisticRegression()
+#fitting of model
+model_1.fit(x_train,y_train)
+#prediction
+y_pred_1=model_1.predict(x_test)
+#accuracy
+accuracy_1=accuracy_score(y_test,y_pred_1)
+print("The accuracy score for Logistic Regression is : ",format(accuracy_1*100))
+
+#using RandomForestClassifier
+from sklearn.ensemble
+import RandomForestClassifier 
+model_3=RandomForestClassifier()
+#fitting of model
+model_3.fit(x_train,y_train)
+#prediction
+y_pred_3=model_3.predict(x_test)
+#accuracy
+accuracy_3=accuracy_score(y_test,y_pred_3)
+print("The accuracy score for Reandom Forest is : ",format(accuracy_3*100))
+
+#using Naive Bayes Classifier
+fromsklearn.naive_bayes importBernoulliNB
+model_6=BernoulliNB()
+#fitting of model
+model_6.fit(x_train,y_train)
+#prediction
+y_pred_6=model_6.predict(x_test)
+#accuracy
+accuracy_6=accuracy_score(y_test,y_pred_6)
+print("The accuracy score for Naive Bayes Classifier is : ",format(accuracy_6*100))
+
+from
+sklearn.svm import SVC
+#'Support vector classifier'
+model=SVC(kernel='linear',random_state=1)
+model.fit(x_train,y_train)
+y_pred=model.predict(x_test)
+fromsklearn.metrics import classification_reportprint(classification_report(y_test,y_pred))
+from sklearn.metricsimportaccuracy_score,confusion_matrix,classification_report
+acc=accuracy_score(y_pred,y_test)*100
+acc
+
+cm=confusion_matrix(y_test,y_pred_1)
+print(cm)
+
+plt.figure(figsize=(12,5))
+plt.title("Confusion Matrix")
+sns.heatmap(cm,annot=True,fmt='d',cmap="rainbow")
+plt.ylabel("Actual values")
+plt.xlabel("Predicted values")
+plt.savefig('Confusion_matrix.png')
+
+new_x=pd.read_csv("nml.csv")
+new_x
+type(new_x)
+df1=np.array(new_x)
+
+#Logistic Regression
+new_x=pd.read_csv("nml.csv")
+new_x
+type(new_x)
+df1=np.array(new_x)
+y_pred_1=model_1.predict(df1)
+y_pred_1
+
+#Random Forest
+new_x=pd.read_csv("nml.csv")
+new_x
+type(new_x)
+df1=np.array(new_x)
+y_pred_3=model_3.predict(df1)
+y_pred_3
+
+#SVM
+new_x=pd.read_csv("nml.csv")
+new_x
+type(new_x)
+df1=np.array(new_x)
+y_pred=model.predict(df1)
+y_pred
+
